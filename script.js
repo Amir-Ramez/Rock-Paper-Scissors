@@ -18,8 +18,6 @@ function getHumanChoice() {
 function playGame() {
     let humanScore = 0,
         computerScore = 0;
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
 
     function playRound(humanChoice, computerChoice) {
         alert(
@@ -43,4 +41,21 @@ function playGame() {
             );
         }
     }
+
+    while (humanScore < 3 && computerScore < 3) {
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
+    }
+
+    if (humanScore === 3)
+        alert(
+            `Game Over!\nHuman Wins the round!\n Total Score: Human: ${humanScore} - Computer: ${computerScore}`
+        );
+    else
+        alert(
+            `Game Over!\nComputer Wins the round!\n Total Score: Human: ${humanScore} - Computer: ${computerScore}`
+        );
 }
+
+playGame();
