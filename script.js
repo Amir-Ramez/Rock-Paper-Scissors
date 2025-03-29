@@ -14,3 +14,6 @@ function getHumanChoice() {
     else if (choice === 'scissors') return 'Scissors';
     else return 'wrong choice\n';
 }
+
+let humanScore = 0,
+    computerScore = 0;
