@@ -15,22 +15,32 @@ function getHumanChoice() {
     else return 'wrong choice\n';
 }
 
-let humanScore = 0,
-    computerScore = 0;
+function playGame() {
+    let humanScore = 0,
+        computerScore = 0;
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
+    function playRound(humanChoice, computerChoice) {
+        alert(
+            `Human choice is: ${humanChoice}\n Computer choice is: ${computerChoice}\n`
+        );
+        if (humanChoice === computerChoice) return 'Draw!';
 
-function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) return 'Draw!';
-
-    if (
-        (humanChoice === 'Rock' && computerChoice === 'Paper') ||
-        (humanChoice === 'Paper' && computerChoice === 'Scissors') ||
-        (humanChoice === 'Scissors' && computerChoice === 'Rock')
-    ) {
-        ++computerScore;
-    } else {
-        ++humanScore;
+        if (
+            (humanChoice === 'Rock' && computerChoice === 'Paper') ||
+            (humanChoice === 'Paper' && computerChoice === 'Scissors') ||
+            (humanChoice === 'Scissors' && computerChoice === 'Rock')
+        ) {
+            ++computerScore;
+            alert(
+                `Computer Wins the round!\n Total Score: Human: ${humanScore} - Computer: ${computerScore}`
+            );
+        } else {
+            ++humanScore;
+            alert(
+                `Human Wins the round!\n Total Score: Human: ${humanScore} - Computer: ${computerScore}`
+            );
+        }
     }
 }
