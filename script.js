@@ -5,3 +5,12 @@ function getComputerChoice() {
     else if (choice === 2) return 'Paper';
     else return 'Scissors';
 }
+
+function getHumanChoice() {
+    let choice = prompt('Enter your choice [Rock, Paper, Scissors]: ');
+    choice = choice.toLowerCase();
+    if (choice === 'rock') return 'Rock';
+    else if (choice === 'paper') return 'Paper';
+    else if (choice === 'scissors') return 'Scissors';
+    else return 'wrong choice\n';
+}
