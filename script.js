@@ -41,3 +41,17 @@ function playRound(humanChoice, computerChoice) {
         );
     }
 }
+
+/////////////////////////////           UI IMPLEMENTATION           /////////////////////////////
+
+const buttons = document.querySelectorAll('.container button');
+
+for (let button of buttons) {
+    button.addEventListener('click', () => {
+        let computerChoice = getComputerChoice();
+        if (button.className === 'rock') playRound('rock', computerChoice);
+        else if (button.className === 'paper')
+            playRound('paper', computerChoice);
+        else playRound('scissors', computerChoice);
+    });
+}
