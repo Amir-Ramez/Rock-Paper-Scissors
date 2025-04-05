@@ -15,30 +15,29 @@ function getHumanChoice() {
     else return 'wrong choice\n';
 }
 
-function playGame() {
-    let humanScore = 0,
-        computerScore = 0;
+let humanScore = 0,
+    computerScore = 0;
 
-    function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+    computerChoice = computerChoice.toLowerCase();
+    alert(
+        `Human choice is: ${humanChoice}\n Computer choice is: ${computerChoice}\n`
+    );
+    if (humanChoice === computerChoice) alert('Draw!');
+    else if (
+        (humanChoice === 'rock' && computerChoice === 'paper') ||
+        (humanChoice === 'paper' && computerChoice === 'scissors') ||
+        (humanChoice === 'scissors' && computerChoice === 'rock')
+    ) {
+        ++computerScore;
         alert(
-            `Human choice is: ${humanChoice}\n Computer choice is: ${computerChoice}\n`
+            `Computer Wins the round!\n Total Score: Human: ${humanScore} - Computer: ${computerScore}`
         );
-        if (humanChoice === computerChoice) return 'Draw!';
-
-        if (
-            (humanChoice === 'Rock' && computerChoice === 'Paper') ||
-            (humanChoice === 'Paper' && computerChoice === 'Scissors') ||
-            (humanChoice === 'Scissors' && computerChoice === 'Rock')
-        ) {
-            ++computerScore;
-            alert(
-                `Computer Wins the round!\n Total Score: Human: ${humanScore} - Computer: ${computerScore}`
-            );
-        } else {
-            ++humanScore;
-            alert(
-                `Human Wins the round!\n Total Score: Human: ${humanScore} - Computer: ${computerScore}`
-            );
-        }
+    } else {
+        ++humanScore;
+        alert(
+            `Human Wins the round!\n Total Score: Human: ${humanScore} - Computer: ${computerScore}`
+        );
     }
 }
