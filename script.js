@@ -36,8 +36,12 @@ function playRound(humanChoice, computerChoice) {
         ++humanScore;
         displayScore();
     }
-    if (humanScore === 5) displayWinner('Human');
-    if (computerScore === 5) displayWinner('Computer');
+
+    if (humanScore === 5 || computerScore === 5) {
+        const winner = humanScore === 5 ? 'Human' : 'Computer';
+        displayWinner(winner);
+        resetScore();
+    }
 }
 
 /////////////////////////////           UI IMPLEMENTATION           /////////////////////////////
@@ -55,6 +59,9 @@ for (let button of buttons) {
 }
 
 function displayScore() {
+    const winner = document.querySelector('.winner');
+    if (winner) winner.remove();
+
     const p = document.querySelector('.score p');
     p.textContent = `Computer: ${computerScore} Human: ${humanScore}`;
 }
@@ -69,5 +76,6 @@ function displayWinner(player) {
     const p = document.createElement('p');
 
     p.textContent = `${player} is the winner!`;
+    p.className = 'winner';
     score.appendChild(p);
 }
