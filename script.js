@@ -31,15 +31,13 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === 'scissors' && computerChoice === 'rock')
     ) {
         ++computerScore;
-        alert(
-            `Computer Wins the round!\n Total Score: Human: ${humanScore} - Computer: ${computerScore}`
-        );
+        displayScore();
     } else {
         ++humanScore;
-        alert(
-            `Human Wins the round!\n Total Score: Human: ${humanScore} - Computer: ${computerScore}`
-        );
+        displayScore();
     }
+    if (humanScore === 5) displayWinner('Human');
+    if (computerScore === 5) displayWinner('Computer');
 }
 
 /////////////////////////////           UI IMPLEMENTATION           /////////////////////////////
@@ -54,4 +52,22 @@ for (let button of buttons) {
             playRound('paper', computerChoice);
         else playRound('scissors', computerChoice);
     });
+}
+
+function displayScore() {
+    const p = document.querySelector('.score p');
+    p.textContent = `Computer: ${computerScore} Human: ${humanScore}`;
+}
+
+function resetScore() {
+    humanScore = 0;
+    computerScore = 0;
+}
+
+function displayWinner(player) {
+    const score = document.querySelector('.score');
+    const p = document.createElement('p');
+
+    p.textContent = `${player} is the winner!`;
+    score.appendChild(p);
 }
